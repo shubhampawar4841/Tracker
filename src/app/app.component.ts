@@ -12,7 +12,7 @@ Chart.register(...registerables);
   template: `
 <main>
   <header class="brand-name text-6xl font-extrabold text-gray-800 text-center mt-8">
-    Workout-Tracker
+    Tracker
   </header>
   <section class="content">
     <app-workout-form></app-workout-form>
@@ -25,5 +25,5 @@ Chart.register(...registerables);
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Workout Tracker';
+  title = 'Tracker';
 }

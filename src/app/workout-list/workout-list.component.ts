@@ -24,7 +24,35 @@ export class WorkoutListComponent implements OnInit {
   selectedWorkoutType = '';
 
   ngOnInit() {
+    this.initializeData();
     this.loadWorkouts();
+  }
+
+  initializeData() {
+    const storedData = localStorage.getItem('workoutData');
+    if (!storedData) {
+      const defaultWorkouts: WorkoutData[] = [
+        {
+          name: "Alice",
+          workouts: ["Running", "Yoga"],
+          numberOfWorkouts: 2,
+          totalWorkoutMinutes: 60
+        },
+        {
+          name: "Bob",
+          workouts: ["Cycling", "Swimming"],
+          numberOfWorkouts: 2,
+          totalWorkoutMinutes: 90
+        },
+        {
+          name: "Charlie",
+          workouts: ["Weightlifting", "Cardio"],
+          numberOfWorkouts: 2,
+          totalWorkoutMinutes: 75
+        }
+      ];
+      localStorage.setItem('workoutData', JSON.stringify(defaultWorkouts));
+    }
   }
 
   loadWorkouts() {
