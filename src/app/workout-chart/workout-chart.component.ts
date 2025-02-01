@@ -14,25 +14,8 @@ interface WorkoutData {
   selector: 'app-workout-chart',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="flex justify-between gap-8 p-6 max-w-6xl mx-auto">
-      <div class="flex-1 max-w-xs p-6 bg-gray-100 rounded-lg shadow-md">
-        <h2 class="text-xl font-semibold text-center mb-4">Select a User:</h2>
-        <ul class="space-y-3">
-          <li *ngFor="let user of workoutData" 
-              (click)="selectUser(user)"
-              class="px-4 py-2 bg-blue-500 text-white rounded-lg cursor-pointer text-center hover:bg-blue-700">
-            {{ user.name }}
-          </li>
-        </ul>
-      </div>
+  templateUrl: './workout-chart.component.html',  // Link to the separate HTML file
 
-      <div *ngIf="selectedUser" class="flex-3 max-w-2xl p-6 bg-white rounded-lg shadow-md">
-        <h3 class="text-2xl font-semibold text-center mb-4">{{ selectedUser.name }}'s Workout Progress</h3>
-        <canvas id="workoutChart" class="w-full h-96 bg-gray-100 rounded-lg"></canvas>
-      </div>
-    </div>
-  `,
   styles: []
 })
 export class WorkoutChartComponent implements OnInit, OnDestroy {
