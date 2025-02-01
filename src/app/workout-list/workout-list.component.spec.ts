@@ -8,8 +8,7 @@ describe('WorkoutListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [WorkoutListComponent],
-      imports: [CommonModule], // Make sure to import any modules that are part of your component
+      imports: [WorkoutListComponent], // ✅ Import standalone component
     }).compileComponents();
   });
 
@@ -23,40 +22,100 @@ describe('WorkoutListComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should initialize data when localStorage is empty', () => {
+    spyOn(localStorage, 'getItem').and.returnValue(null);
+    spyOn(localStorage, 'setItem');
+
+    component.initializeData();
+
+    expect(localStorage.setItem).toHaveBeenCalled();
+    expect(component.workouts.length).toBeGreaterThan(0);
+  });
+
   it('should load workouts from localStorage', () => {
-    // Mock the localStorage data
     const mockWorkouts = [
-      {
-        name: 'Alice',
-        workouts: ['Running', 'Yoga'],
-        numberOfWorkouts: 2,
-        totalWorkoutMinutes: 60,
-      },
-      {
-        name: 'Bob',
-        workouts: ['Cycling', 'Swimming'],
-        numberOfWorkouts: 2,
-        totalWorkoutMinutes: 90,
-      },
+      { name: 'Alice', workouts: ['Running'], numberOfWorkouts: 1, totalWorkoutMinutes: 30 },
+      { name: 'Bob', workouts: ['Swimming'], numberOfWorkouts: 1, totalWorkoutMinutes: 40 }
     ];
     spyOn(localStorage, 'getItem').and.returnValue(JSON.stringify(mockWorkouts));
 
-    // Call the method to load workouts
     component.loadWorkouts();
 
-    // Ensure that the workouts are loaded properly
     expect(component.workouts.length).toBe(2);
     expect(component.workouts[0].name).toBe('Alice');
-    expect(component.workouts[1].workouts).toContain('Cycling');
+    expect(component.workouts[1].workouts).toContain('Swimming');
   });
 
-  it('should handle loading error gracefully', () => {
-    // Simulate an error when getting data from localStorage
-    spyOn(localStorage, 'getItem').and.throwError('Error loading data');
+  it('should handle localStorage parsing error gracefully', () => {
+    spyOn(localStorage, 'getItem').and.throwError('Storage error');
 
     component.loadWorkouts();
 
-    // Ensure the workouts array is empty in case of an error
     expect(component.workouts.length).toBe(0);
   });
+
+  it('should filter workouts by search term', () => {
+    component.workouts = [
+      { name: 'Alice', workouts: ['Running'], numberOfWorkouts: 1, totalWorkoutMinutes: 30 },
+      { name: 'Bob', workouts: ['Swimming'], numberOfWorkouts: 1, totalWorkoutMinutes: 40 }
+    ];
+    component.searchTerm = 'alice';
+    component.applyFilters();
+
+    expect(component.filteredWorkouts.length).toBe(1);
+    expect(component.filteredWorkouts[0].name).toBe('Alice');
+  });
+
+  it('should filter workouts by selected workout type', () => {
+    component.workouts = [
+      { name: 'Alice', workouts: ['Running'], numberOfWorkouts: 1, totalWorkoutMinutes: 30 },
+      { name: 'Bob', workouts: ['Swimming'], numberOfWorkouts: 1, totalWorkoutMinutes: 40 }
+    ];
+    component.selectedWorkoutType = 'Swimming';
+    component.applyFilters();
+
+    expect(component.filteredWorkouts.length).toBe(1);
+    expect(component.filteredWorkouts[0].name).toBe('Bob');
+  });
+
+  it('should move to the next page correctly', () => {
+    component.workouts = Array(10).fill({
+      name: 'Alice', workouts: ['Running'], numberOfWorkouts: 1, totalWorkoutMinutes: 30
+    });
+    component.itemsPerPage = 5;
+    component.currentPage = 1;
+
+    component.nextPage();
+
+    expect(component.currentPage).toBe(2);
+  });
+
+  it('should move to the previous page correctly', () => {
+    component.currentPage = 2;
+
+    component.previousPage();
+
+    expect(component.currentPage).toBe(1);
+  });
+
+  it('should check if next page exists', () => {
+    component.workouts = Array(10).fill({
+      name: 'Alice', workouts: ['Running'], numberOfWorkouts: 1, totalWorkoutMinutes: 30
+    });
+    component.itemsPerPage = 5;
+    component.currentPage = 1;
+
+    expect(component.hasNextPage()).toBeTrue();
+  });
+
+  it('should return false when no next page exists', () => {
+    component.workouts = Array(5).fill({
+      name: 'Alice', workouts: ['Running'], numberOfWorkouts: 1, totalWorkoutMinutes: 30
+    });
+    component.itemsPerPage = 5;
+    component.currentPage = 1;
+
+    expect(component.hasNextPage()).toBeFalse();
+  });
+
 });
