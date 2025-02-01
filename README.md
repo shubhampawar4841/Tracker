@@ -10,7 +10,6 @@ The **Tracker** is a single-page application (SPA) built with **Angular 14+** an
 - ✅ **Data Persistence**: Uses `localStorage` to store workout data.
 - ✅ **Charts & Analytics**: Displays workout progress using **Chart.js**.
 - ✅ **Unit Testing**: 100% test coverage for one **component** and one **service**.
-- ✅ **Responsive UI**: Styled with **TailwindCSS**.
 - ✅ **Deployed Online**: Hosted for easy access.
 |
 
@@ -30,11 +29,10 @@ The **Tracker** is a single-page application (SPA) built with **Angular 14+** an
 📦 health-challenge-tracker/
 ├── 📂 src/
 │   ├── 📂 app/
-│   │   ├── 📂 components/
 │   │   │   ├── 📂 workout-form/
 │   │   │   ├── 📂 workout-list/
 │   │   │   ├── 📂 workout-chart/
-│   │   ├── 📂 services/
+│   │   │   ├── 📂 services/
 │   │   │   ├── workout.service.ts
 │   │   │   ├── workout.service.spec.ts
 │   │   ├── app.component.ts
