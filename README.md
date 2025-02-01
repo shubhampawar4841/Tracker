@@ -1,7 +1,7 @@
-# 🚀 Health Challenge Tracker
+# 🚀 Tracker
 
 ## 📌 Overview
-The **Health Challenge Tracker** is a single-page application (SPA) built with **Angular 14+** and **TailwindCSS** that allows users to log their workouts, filter and search workout records, and visualize progress using charts. This project meets all the assignment requirements, including **pagination, filtering, unit testing with 100% coverage, and deployment**.
+The **Tracker** is a single-page application (SPA) built with **Angular 14+** and **TailwindCSS** that allows users to log their workouts, filter and search workout records, and visualize progress using charts. This project meets all the assignment requirements, including **pagination, filtering, unit testing with 100% coverage, and deployment**.
 
 ## 🌟 Features
 - ✅ **Add Workout Data**: Users can enter their name, workout type, and duration.
@@ -12,22 +12,18 @@ The **Health Challenge Tracker** is a single-page application (SPA) built with *
 - ✅ **Unit Testing**: 100% test coverage for one **component** and one **service**.
 - ✅ **Responsive UI**: Styled with **TailwindCSS**.
 - ✅ **Deployed Online**: Hosted for easy access.
-
-## 📷 Screenshots
-| Add Workout | Workout List & Filters | Workout Chart |
-|------------|----------------------|--------------|
-| ![Add Workout](./screenshots/add-workout.png) | ![Workout List](./screenshots/workout-list.png) | ![Workout Chart](./screenshots/workout-chart.png) |
+|
 
 ## 🎯 Tech Stack
 - **Frontend**: Angular 14+, TypeScript
 - **Styling**: TailwindCSS
 - **Charts**: Chart.js
 - **State Management**: Local Storage
-- **Testing**: Jasmine & Karma
-- **Deployment**: Vercel/Netlify
+- **Testing**: Karma
+- **Deployment**: Vercel
 
 ## 🚀 Live Demo
-🔗 **[Live Demo](https://your-deployed-app-link.com/)**
+🔗 **[Live Demo](https://tracker-phi-rosy.vercel.app/)**
 
 ## 📂 Folder Structure
 ```
@@ -54,8 +50,8 @@ The **Health Challenge Tracker** is a single-page application (SPA) built with *
 ## 🛠️ Setup & Installation
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/your-username/health-challenge-tracker.git
-   cd health-challenge-tracker
+   git clone https://github.com/shubhampawar4841/Tracker
+   cd Tracker
    ```
 2. **Install dependencies**
    ```bash
@@ -88,10 +84,8 @@ The **Health Challenge Tracker** is a single-page application (SPA) built with *
 - 🔹 **User Authentication** (Login/Signup for personalized data storage)
 - 🔹 **API Integration** (Instead of localStorage, use Node.js & MongoDB backend)
 - 🔹 **Daily Workout Streaks & Goals**
-- 🔹 **Google Fit / Apple Health Integration**
 
-## 🎥 Video Submission
-📌 **[Video Link](https://drive.google.com/your-video-link)** (Introduction, Challenges, & Improvements)
+
 
 ## 📜 License
 This project is licensed under the **MIT License**.
@@ -99,7 +93,7 @@ This project is licensed under the **MIT License**.
 ## ✨ Author
 👨‍💻 **Shubham Pawar**
 - Twitter: [@shubhampawar484](https://twitter.com/shubhampawar484)
-- GitHub: [shubhampawar4036](https://github.com/shubhampawar4036)
+- GitHub: [shubhampawar4841](https://github.com/shubhampawar4841)
 
 ---
 
